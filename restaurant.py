@@ -4,9 +4,9 @@ import datetime
 from tkinter import filedialog,messagebox
 
 operator = ''
-food_price = [100.0,150.0,130.0,110.0,100.0,150.0,130.0,110.0,]
-drink_price = [100.0,150.0,130.0,110.0,100.0,150.0,130.0,110.0,]
-dessert_price = [100.0,150.0,130.0,110.0,100.0,150.0,130.0,110.0,]
+food_price = [600.0,150.0,130.0,400.0,120.0,80.0,50.0,60.0,]
+drink_price = [25.0,25.0,30.0,25.0,25.0,80.0,30.0,25.0,]
+dessert_price = [40.0,50.0,30.0,25.0,50.0,30.0,50.0,30.0,]
 
 def click_button(character):
     global operator
@@ -85,12 +85,12 @@ def total_calculation():
     my_subtotal = food_subtotal + drink_subtotal + dessert_subtotal
     my_taxes = my_subtotal * 0.11
     my_total = my_subtotal + my_taxes
-    food_cost_var.set(f'${round(food_subtotal ,2)}')
-    drink_cost_var.set(f'${round(drink_subtotal, 2)}')
-    dessert_cost_var.set(f'${round(dessert_subtotal, 2)}')
-    subtotal_cost_var.set(f'${round(my_subtotal, 2)}')
-    taxes_cost_var.set(f'${round(my_taxes, 2)}')
-    total_cost_var.set(f'${round(my_total, 2)}')
+    food_cost_var.set(f'৳{round(food_subtotal ,2)}')
+    drink_cost_var.set(f'৳{round(drink_subtotal, 2)}')
+    dessert_cost_var.set(f'৳{round(dessert_subtotal, 2)}')
+    subtotal_cost_var.set(f'৳{round(my_subtotal, 2)}')
+    taxes_cost_var.set(f'৳{round(my_taxes, 2)}')
+    total_cost_var.set(f'৳{round(my_total, 2)}')
 
 def create_invoice():
     invoice_text.delete(1.0 , END)
@@ -106,21 +106,21 @@ def create_invoice():
     for f in food_text:
         if f.get() != '0':
             invoice_text.insert(END , f'{food_list[x]}\t\t{f.get()}\t\t'
-                                      f' ${int(f.get()) * food_price[x]}\n')
+                                      f' ৳{int(f.get()) * food_price[x]}\n')
         x += 1
 
     x = 0
     for d in drink_text:
         if d.get() != '0':
             invoice_text.insert(END, f'{drink_list[x]}\t\t{d.get()}\t\t'
-                                     f' ${int(d.get()) * drink_price[x]}\n')
+                                     f' ৳{int(d.get()) * drink_price[x]}\n')
         x += 1
 
     x = 0
     for e in dessert_text:
         if e.get() != '0':
             invoice_text.insert(END, f'{dessert_list[x]}\t\t{e.get()}\t\t'
-                                     f' ${int(e.get()) * dessert_price[x]}\n')
+                                     f' ৳{int(e.get()) * dessert_price[x]}\n')
         x += 1
     invoice_text.insert(END, f'-' * 80 + '\n')
     invoice_text.insert(END, f'Food Subtotal:\t\t\t{food_cost_var.get()}\n')
@@ -223,7 +223,7 @@ dessert_panel = LabelFrame(left_panel,text='Dessert' , font=('Dosis',19,'bold'),
 dessert_panel.pack(side=LEFT)
 
 # Right Panel
-right_panel = Frame(application,bd=1 ,relief=FLAT)
+right_panel = Frame(application,bd=1 ,relief=FLAT )
 right_panel.pack(side=RIGHT)
 
 # Calculator Panel
@@ -239,9 +239,9 @@ buttons_panel = Frame(application,bd =1 , relief=FLAT,bg='burlywood1')
 buttons_panel.pack()
 
 # Product List
-food_list = ['Pizza' , 'Burger','Kabab','Salad' ,'Sandwich','Hot-dogs','Roll','Noodles']
+food_list = ['Pizza' , 'Burger','Kabab','Salad' ,'Sandwich','Hot-dog','Chicken-Roll','Noodles']
 drink_list = ['7up','Pepsi','Cocacola','Fanta','Sprite','Juice','Lemon','Soda']
-dessert_list = ['Ice-cream','Cake','Fruit','Pudding','Cake2','Cake3','Cake4','Cake5']
+dessert_list = ['Ice-cream','Cake','Fruit','Pudding','Curd','Sweet','Vanila','Chocolate']
 
 # Create Food items
 food_variables = []
